@@ -1,0 +1,9 @@
+.outerBox{
+  place-self: center;
+  margin-right: 8px;
+}
+
+.searchBar{
+  width: fit-content;
+  font-size: xx-large;
+}

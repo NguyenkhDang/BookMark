@@ -1,0 +1,53 @@
+.outerBox{
+  display: inline;
+  float: center;
+}
+.addBookMark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookMarkForm {
+  position: relative;
+  background: rgba(48, 42, 42, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bookMarkForm label {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookMarkForm button {
+  margin-top: auto;
+}
+.addBtn{
+  font-size: xx-large;
+  border-radius: 10px;
+}
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  color: red;
+}
