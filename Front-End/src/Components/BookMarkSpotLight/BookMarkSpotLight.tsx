@@ -18,30 +18,42 @@ function BookMarkSpotLight({result}: SearchResultsProps) {
     setBookmarks(data.bookmarks);
     console.log(data)
     };
-    
   useEffect(() => {
     fetchBookmarks();
   },[]);
 
+  const handleDelete = async (id: number) => {
+    await fetch(`http://localhost:5000/bookmarks/${id}`, {
+      method: "DELETE",
+    });
+
+    setBookmarks(prev => prev.filter(b => b.id !== id));
+  };
   return (
     <div className="BookMarkSpotLight">
       {result.length > 0 && !result ? <div>No result found</div>
       :
       result.length === 0 ? 
       bookmarks.map((bookmark) => (
-        <a href={bookmark.url} target="_blank" rel="noreferrer">
+        <div className="box">
+          <button onClick={() => handleDelete(bookmark.id)}className="deleteBtn">X</button>
+          <a href={bookmark.url} target="_blank" rel="noreferrer" className="linkBookMark">
           <div className="BookMarkEach" key={bookmark.id}>
             <h4>{bookmark.webname}</h4>
-          </div>
-        </a>
+            </div>
+          </a>
+        </div>
       ))
       :
       result.map(r => (
-        <a href={r.url} target="_blank" rel="noreferrer">
-          <div className="BookMarkEach" key={r.id}>
-            <h4>{r.webname}</h4>
-          </div>
-        </a>
+        <div className="box">
+          <button onClick={() => handleDelete(r.id)} className="deleteBtn">X</button>
+          <a href={r.url} target="_blank" rel="noreferrer" className="linkBookMark">
+            <div className="BookMarkEach" key={r.id}>
+              <h4>{r.webname}</h4>
+            </div>
+          </a>
+        </div>
       ))}
 
     </div>

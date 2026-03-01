@@ -1,16 +1,20 @@
+
 .BookMarkSpotLight {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3,min-content);
   gap: 1rem;
   width: 95vw;
   margin: 0 auto;
+  border: 1px solid black;
+  padding: 1em;
 }
 .BookMarkEach {
-  width: fit-content;
-  padding: 1rem;
+  width: 100%;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   font-size: 3em;
+  text-align: center;
 }
 
 .BookMarkEach:hover{
@@ -19,7 +23,28 @@
   text-decoration: underline;
 }
 
-a{
+.linkBookMark{
   color: rgba(255, 255, 255, 1);
   text-decoration: none;
+
+}
+.paraBookmark{
+  text-align: center;
+}
+.box {
+  position: relative;
+}
+
+.deleteBtn {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 10%;
+  top: 8px;
+  right: 8px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.deleteBtn:hover {
+  color: red;
+  scale: 1.4;
 }

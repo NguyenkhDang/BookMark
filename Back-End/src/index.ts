@@ -58,6 +58,23 @@ app.post("/searchbar", (req, res) => {
   console.log("Results: ", results)
 });
 
+app.delete("/bookmarks/:id", (req, res) => {
+  const id = Number(req.params.id);
+
+  const exists = bookmarks.some(b => b.id === id);
+  if (!exists) {
+    return res.status(404).json({
+      error: `Bookmark with id ${id} not found`
+    });
+  }
+
+  bookmarks = bookmarks.filter(b => b.id !== id);
+
+  res.json({
+    message: "Bookmark deleted successfully",
+    bookmarks
+  });
+});
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddBookMark from "./Components/AddBookMark/AddBookMark"
 import BookMarkSpotLight from "./Components/BookMarkSpotLight/BookMarkSpotLight";
 import Searchbar from "./Components/Searchbar/Searchbar";
@@ -9,15 +9,9 @@ type Bookmark = {
   url: string;
 };
 function App() {
-  const [message, setMessage] = useState("");
+
 
   const [result, setResult] = useState<Bookmark[]>([])
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/hello")
-      .then(res => res.json())
-      .then(data => setMessage(data.message));
-  }, []);
 
   return (
     <div>
@@ -27,7 +21,6 @@ function App() {
         <AddBookMark />
       </div>
       <BookMarkSpotLight result={result}/>
-      <p>{message}</p>
     </div>
   );
 }
