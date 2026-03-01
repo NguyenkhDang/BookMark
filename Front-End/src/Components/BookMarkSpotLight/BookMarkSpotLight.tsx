@@ -21,7 +21,10 @@ function BookMarkSpotLight({result}: SearchResultsProps) {
   useEffect(() => {
     fetchBookmarks();
   },[]);
-
+  const getFavicon = (url: string) => {
+    const domain = new URL(url).hostname;
+    return `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
+  };
   const handleDelete = async (id: number) => {
     await fetch(`http://localhost:5000/bookmarks/${id}`, {
       method: "DELETE",
@@ -39,7 +42,8 @@ function BookMarkSpotLight({result}: SearchResultsProps) {
           <button onClick={() => handleDelete(bookmark.id)}className="deleteBtn">X</button>
           <a href={bookmark.url} target="_blank" rel="noreferrer" className="linkBookMark">
           <div className="BookMarkEach" key={bookmark.id}>
-            <h4>{bookmark.webname}</h4>
+              <h4>{bookmark.webname}</h4>
+              <img src={getFavicon(bookmark.url)} className="favicon" alt="favicon" />
             </div>
           </a>
         </div>

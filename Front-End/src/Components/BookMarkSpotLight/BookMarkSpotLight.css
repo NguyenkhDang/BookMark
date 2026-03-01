@@ -2,7 +2,7 @@
 .BookMarkSpotLight {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3,min-content);
+  grid-template-rows: repeat(min-content);
   gap: 1rem;
   width: 95vw;
   margin: 0 auto;
@@ -47,4 +47,9 @@
 .deleteBtn:hover {
   color: red;
   scale: 1.4;
+}
+
+.favicon{
+  width: 1em;
+  height: 1em;
 }
