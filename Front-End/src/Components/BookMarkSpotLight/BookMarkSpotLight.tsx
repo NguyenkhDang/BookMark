@@ -57,6 +57,7 @@ function BookMarkSpotLight({result}: SearchResultsProps) {
           <a href={r.url} target="_blank" rel="noreferrer" className="linkBookMark">
             <div className="BookMarkEach" key={r.id}>
               <h4>{r.webname}</h4>
+              <img src={getFavicon(r.url)} className="favicon" alt="favicon" />
             </div>
           </a>
         </div>

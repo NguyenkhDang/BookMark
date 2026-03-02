@@ -18,23 +18,19 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ===== Health check =====
+
 app.get("/", (req, res) => {
   res.send("API is running 🚀");
 });
 
-// ===== Test route =====
-app.get("/api/hello", (req, res) => {
-  res.json({ message: "Hello from backend 👋" });
-});
 
-// ===== Bookmarks routes =====
 app.get("/bookmarks", (req, res) => {
   res.json({ bookmarks });
 });
 
 app.post("/bookmarks", (req, res) => {
   const { url, webname } = req.body;
+  console.log("Received: ", req.body)
   const newBookmark: Bookmark = { id: currentId++, url, webname };
   bookmarks.push(newBookmark);
   res.status(201).json({ bookmarks });
@@ -48,7 +44,6 @@ app.delete("/bookmarks/:id", (req, res) => {
   res.json({ message: "Bookmark deleted successfully", bookmarks });
 });
 
-// ===== Search route =====
 app.get("/searchbar", (req, res) => res.json({ searchResult }));
 
 app.post("/searchbar", (req, res) => {
@@ -61,7 +56,6 @@ app.post("/searchbar", (req, res) => {
   res.json(results);
 });
 
-// ===== Start server =====
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
