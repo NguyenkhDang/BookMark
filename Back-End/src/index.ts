@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+const PORT = process.env.PORT || 5000;
 type Bookmark = {
   id: number;
   url: string;
@@ -25,8 +26,6 @@ app.get("/bookmarks" , (req, res) =>{
 app.get("/searchbar" , (req, res) =>{
   res.json({searchResult})
 })
-
-const PORT = 5000;
 
 
 app.post("/bookmarks", (req, res) => {
