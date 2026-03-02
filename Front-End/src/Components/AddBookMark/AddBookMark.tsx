@@ -7,6 +7,7 @@ function AddBookMark() {
     url: string
     webname: string
   }
+  const API_URL = import.meta.env.VITE_API_URL
   const [bookmark, setBookmark] = useState<Bookmark>({
     id: 0,
     url: "",
@@ -27,7 +28,7 @@ function AddBookMark() {
   
 
   try {
-    const response = await fetch("http://localhost:5000/bookmarks", {
+    const response = await fetch(`${API_URL}/bookmarks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

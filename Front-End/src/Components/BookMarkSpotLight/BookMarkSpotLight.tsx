@@ -11,9 +11,11 @@ interface SearchResultsProps {
   result: any[];
 }
 function BookMarkSpotLight({result}: SearchResultsProps) {
+
+  const API_URL = import.meta.env.Vite_API_URL
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const fetchBookmarks = async () => {
-    const res = await fetch("http://localhost:5000/bookmarks");
+    const res = await fetch(`${API_URL}/bookmarks`);
     const data = await res.json();
     setBookmarks(data.bookmarks);
     console.log(data)
@@ -26,7 +28,7 @@ function BookMarkSpotLight({result}: SearchResultsProps) {
     return `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
   };
   const handleDelete = async (id: number) => {
-    await fetch(`http://localhost:5000/bookmarks/${id}`, {
+    await fetch(`${API_URL}/bookmarks/${id}`, {
       method: "DELETE",
     });
 

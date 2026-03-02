@@ -6,6 +6,7 @@ interface SearchBarProps{
 
 function Searchbar({setResult} : SearchBarProps) {
 
+  const API_URL = import.meta.env.VITE_API_URL
   const [search, setSearch] = useState("");
 
 
@@ -16,7 +17,7 @@ function Searchbar({setResult} : SearchBarProps) {
  
   const findSearchResult = async () =>{
     try{
-      const response = await fetch("http://localhost:5000/searchbar", {
+      const response = await fetch(`${API_URL}/searchbar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
